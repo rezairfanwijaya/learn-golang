@@ -30,4 +30,8 @@ func main() {
 	// variable menampung hasil penjumlahan dari function Add di file add.go
 	jumlah := calculation.Add(4, 90)
 	fmt.Println("Hasil penjumlahan", jumlah)
+
+	// variable menampung hasil perkalian dari function Mutiplication di file multiplication.go
+	kali := calculation.Multipilcation(10, 90)
+	fmt.Println("Hasil Perkalaian", kali)
 }
