@@ -15,6 +15,7 @@ package main
 import (
 	"fmt"
 	"myapp/calculation"
+	"myapp/variables"
 )
 
 func main() {
@@ -34,4 +35,8 @@ func main() {
 	// variable menampung hasil perkalian dari function Mutiplication di file multiplication.go
 	kali := calculation.Multipilcation(10, 90)
 	fmt.Println("Hasil Perkalaian", kali)
+
+	// variable untuk mencetak variable dari function kata di file kata.go
+	kata := variables.Kata()
+	fmt.Println(kata)
 }
