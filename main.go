@@ -83,4 +83,10 @@ func main() {
 	default:
 		fmt.Println("size tidak dikenal")
 	}
+
+	// ++++++++++++++++ LOOPING  ++++++++++++++++
+	iter := 100
+	for i := 1; i <= iter; i++ {
+		fmt.Println(i, "saya siapa ? ")
+	}
 }
