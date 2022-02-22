@@ -39,4 +39,8 @@ func main() {
 	// variable untuk mencetak variable dari function kata di file kata.go
 	kata := variables.Kata()
 	fmt.Println(kata)
+
+	// variable angka
+	umur := 20
+	fmt.Print(umur)
 }

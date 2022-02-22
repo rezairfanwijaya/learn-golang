@@ -9,6 +9,8 @@ func Kata() string {
 
 	// atau bisa juga dengan menulis sperti ini
 	nama := "Reza Irfan Wijaya"
+	// cara merubah nilai yg di definisikan oleh :=
+	nama = "Reza irfan"
 	return fmt.Sprintf(nama)
 
 }
