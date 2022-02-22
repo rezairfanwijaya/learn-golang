@@ -70,4 +70,17 @@ func main() {
 	}
 
 	fmt.Println(index)
+
+	// ++++++++++++++++ SWITCH CASE  ++++++++++++++++
+	size := 2
+	switch size {
+	case 1:
+		fmt.Println("size", size)
+	case 2:
+		fmt.Println("size", size)
+	case 3:
+		fmt.Println("size", size)
+	default:
+		fmt.Println("size tidak dikenal")
+	}
 }
