@@ -41,6 +41,33 @@ func main() {
 	fmt.Println(kata)
 
 	// variable angka
-	umur := 20
+	umur := 10
 	fmt.Print(umur)
+
+	// ++++++++++++++++ PERCABANGAN IF  ++++++++++++++++
+	if umur > 15 {
+		fmt.Println("Silahakn masuk ruangan")
+	} else {
+		fmt.Println("jangan masuk ruangan")
+	}
+
+	score := 78
+	var index string
+
+	index = "a"
+
+	if score <= 50 {
+		index = "C"
+	} else if score > 60 && score < 80 {
+
+		if score >= 75 && score <= 80 {
+			index = "B+"
+		} else {
+			index = "B"
+		}
+	} else {
+		index = "A"
+	}
+
+	fmt.Println(index)
 }
