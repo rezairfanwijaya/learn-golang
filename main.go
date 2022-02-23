@@ -137,4 +137,52 @@ func main() {
 
 	}
 
+	// ++++++++++++++++ ARRAY  ++++++++++++++++
+	// deklarasi cara ke 1
+	var mobils [5]string
+	mobils[0] = "Lambo"
+	mobils[1] = "Ferrari"
+	mobils[2] = "BMW"
+	mobils[3] = "Mazda"
+	mobils[4] = "Angkot"
+	// cetak semua isi
+	fmt.Println(mobils)
+	// cetak data tertentu dari array
+	fmt.Println(mobils[0])
+	fmt.Println(mobils[4])
+	// cetak panjang array
+	fmt.Println(len(mobils))
+
+	// deklarasi cara ke 2
+	// motors := [4]string{"ZX10R", "HAYABUSA", "VESPA", "HARLEY"}
+	// bisa juga isi vertikal, namun data terakhir harus ada koma (Setelah harley)
+	// motors := [4]string{
+	// 	"ZX10R",
+	// 	"HAYABUSA",
+	// 	"VESPA",
+	// 	"HARLEY",
+	// }
+
+	// selain itu array juga bisa menentukan panjang nya sendiri dengan menggunakan [...] misal
+	motors := [...]string{
+		"ZX10R",
+		"HAYABUSA",
+		"VESPA",
+		"HARLEY",
+		"JUPITER",
+		"SUPRA",
+	}
+	// cetak semua isi
+	fmt.Println(motors)
+	// cetak data tertentu dari array
+	fmt.Println(motors[3])
+	fmt.Println(motors[1])
+	// cetak panjang array
+	fmt.Println(len(motors))
+
+	// perulangan pada array
+	for index, motor := range motors {
+		fmt.Println("Motor dengan index ke -", index, motor)
+	}
+
 }
