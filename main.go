@@ -85,8 +85,16 @@ func main() {
 	}
 
 	// ++++++++++++++++ LOOPING  ++++++++++++++++
+	// for
 	iter := 100
 	for i := 1; i <= iter; i++ {
 		fmt.Println(i, "saya siapa ? ")
+	}
+
+	// while nya golang
+	i := 1
+	for i <= 10 {
+		fmt.Println("saya dari while", i)
+		i++
 	}
 }
