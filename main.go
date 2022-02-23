@@ -110,4 +110,19 @@ func main() {
 	}
 	// syntax _ digunakan untuk menampung/memperbolehkan varibale yang tidak digunakan untuk tetap dideklarasikan
 
+	// saya akan mencoba latihan
+	// ada string GOLANG ADALAH BAHASA TERBAIK
+	// jika index ganjil jangan tampilkan
+	golang := "GOLANG BAHASA TERBAIK SAAT INI"
+	for i, huruf := range golang {
+		// seleksi index ganjil
+		if i%2 == 0 {
+			fmt.Println("huruf hasil seleksi ganjil genap: ", string(huruf))
+			// seleksi huruf vokal
+			if string(huruf) == "A" || string(huruf) == "I" || string(huruf) == "U" || string(huruf) == "E" || string(huruf) == "O" {
+				fmt.Println("Huruf hasil seleksi vokal", string(huruf))
+			}
+		}
+	}
+
 }
