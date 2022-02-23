@@ -97,4 +97,17 @@ func main() {
 		fmt.Println("saya dari while", i)
 		i++
 	}
+
+	// foreach nya golang
+	data := "Reza Irfan wijaya"
+	for index, huruf := range data {
+		fmt.Println("index :", index, "hurufnya : ", string(huruf))
+	}
+
+	// lalu jika ingin menampilkan huruf saja tinggal dengan cari berikut
+	for _, letters := range data {
+		fmt.Println("Huruf nya : ", string(letters))
+	}
+	// syntax _ digunakan untuk menampung/memperbolehkan varibale yang tidak digunakan untuk tetap dideklarasikan
+
 }
