@@ -115,14 +115,26 @@ func main() {
 	// jika index ganjil jangan tampilkan
 	golang := "GOLANG BAHASA TERBAIK SAAT INI"
 	for i, huruf := range golang {
+
 		// seleksi index ganjil
 		if i%2 == 0 {
+
 			fmt.Println("huruf hasil seleksi ganjil genap: ", string(huruf))
+
+			// menggunakan if
 			// seleksi huruf vokal
 			if string(huruf) == "A" || string(huruf) == "I" || string(huruf) == "U" || string(huruf) == "E" || string(huruf) == "O" {
 				fmt.Println("Huruf hasil seleksi vokal", string(huruf))
 			}
+
+			// menggunakan case
+			switch string(huruf) {
+			case "A", "I", "U", "E", "O":
+				fmt.Println("huruf VOKAL dari case: ", string(huruf))
+
+			}
 		}
+
 	}
 
 }
