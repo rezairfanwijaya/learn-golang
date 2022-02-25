@@ -220,4 +220,23 @@ func main() {
 	fmt.Println(cap(colors[1:3]))
 	fmt.Println(colors[1:3])
 
+	// fungsi copy
+	// fungsi copy memiliki 2 parameter
+	// copy (dst, src)
+	// dst => tujuan
+	// src => asal
+
+	// buat array tipe string dengan jumlah element yang bisa ditampung sebanyak 3 sebagai tujuan
+	platNomor := make([]string, 4)
+	// buat array sebagai asal
+	platNomorBackup := []string{"AB 189 BC", "H 789 BNN", "R 345 ZS", "G 890 PO"}
+	//copy akan mengembalikan angka yang mana menunjukan jumlah data yang tercopy
+	copy := copy(platNomor, platNomorBackup)
+	fmt.Println("==================")
+	fmt.Println(copy)
+	fmt.Println("len dari tujuan : ", len(platNomor))
+	for _, plat := range platNomor {
+		fmt.Println(plat)
+	}
+
 }
