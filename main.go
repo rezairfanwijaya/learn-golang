@@ -1,6 +1,6 @@
 package main
 
-// Kenapa nama pakcage nya main ?
+// Kenapa nama package nya main ?
 // karena digolang ada 2 jenis package
 // 1. Executeable
 // ini default dari golang nya yaitu package main -> ini bisa langsung di execute dari terminal
