@@ -204,4 +204,20 @@ func main() {
 		}
 	}
 
+	// fungsi cap dan len pada slice
+	// fungsi len akan mengukur panjang/jumlah data yang diambil
+	// fungsi cap akan mengukur kapasitas dari data
+	fmt.Println(len(colors))
+	fmt.Println(cap(colors))
+
+	fmt.Println("===============")
+	fmt.Println(len(colors[0:2]))
+	fmt.Println(cap(colors[0:2]))
+	fmt.Println(colors[0:2])
+
+	fmt.Println("===============")
+	fmt.Println(len(colors[1:3]))
+	fmt.Println(cap(colors[1:3]))
+	fmt.Println(colors[1:3])
+
 }
