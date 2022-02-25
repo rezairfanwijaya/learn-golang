@@ -185,4 +185,23 @@ func main() {
 		fmt.Println("Motor dengan index ke -", index, motor)
 	}
 
+	// ++++++++++++++++ SLICE  ++++++++++++++++
+	// deklarasi pertama
+	var guitars []string
+	// memasukan data ke array
+	guitars = append(guitars, "guitas 1")
+	guitars = append(guitars, "guitas 2")
+	// pemanggilann data
+	fmt.Println(guitars[0])
+
+	// deklarasi kedua
+	colors := []string{"hitam", "putih", "biru"}
+	// pemangilan data
+	for _, color := range colors {
+		fmt.Println(color)
+		if color == "biru" {
+			fmt.Println("warna kesukaan saya")
+		}
+	}
+
 }
