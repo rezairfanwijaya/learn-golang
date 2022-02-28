@@ -48,6 +48,7 @@ func main() {
 				fmt.Println("dengan nilai A+")
 			}
 		}
+		
 	}
 
 	// looping
