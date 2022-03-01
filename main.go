@@ -238,5 +238,56 @@ func main() {
 	for _, plat := range platNomor {
 		fmt.Println(plat)
 	}
+	fmt.Println("==================")
+
+	// ++++++++++++++++ MAP  ++++++++++++++++
+	// jika pada bahasa lain map ini sebagai array assosiative
+
+	// deklarasi pertama
+	// dengan syntax
+	// var namaMap map[tipe index]tipe value
+	var konten map[string]int
+	// inisiasi
+	konten = map[string]int{}
+	// memasukan data ke map
+	konten["PHP"] = 10
+	konten["JAVA"] = 9
+	konten["GO"] = 10
+
+	fmt.Println(konten)
+	fmt.Println(konten["go"])
+	fmt.Println(konten["GO"])
+	for key, bahasa := range konten {
+		fmt.Println("key : ", key, "value : ", bahasa)
+	}
+	fmt.Println("=============")
+
+	// dekralasi kedua
+	books := map[string]string{
+		"Novel": "Novel1",
+		"Comic": "Comic1",
+		"Sains": "Sains",
+	}
+	fmt.Println(books)
+	fmt.Println(books["Sains"])
+	for key, value := range books {
+		fmt.Println("key : ", key, "value : ", value)
+	}
+
+	fmt.Println("================")
+	// hapus data dari map
+	delete(books, "Comic")
+	for key, value := range books {
+		fmt.Println("key : ", key, "value : ", value)
+	}
+
+	// cara cek apakah ada index tertentu di dalam map
+	// sama seperti pada perulangan kita bisa menggukanan _ jiga ada parameter yang tidak ingin dipakai
+	_, isAvailable := books["Comic"]
+	fmt.Println(isAvailable)
+
+	value, isAvailable := books["Sains"]
+	fmt.Println(isAvailable)
+	fmt.Println(value)
 
 }
