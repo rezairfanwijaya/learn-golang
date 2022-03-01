@@ -99,4 +99,43 @@ func main() {
 	fmt.Println(len(m))
 	fmt.Println(cap(m))
 
+	var piano []string
+	piano = append(piano, "piano1")
+	piano = append(piano, "piano2")
+	piano = append(piano, "piano")
+	for index, items := range piano {
+		fmt.Println(index, items)
+	}
+
+	colors := []string{"red", "green", "blue"}
+	fmt.Println(colors)
+	newColor := colors[0:2]
+	fmt.Println(newColor)
+	fmt.Println(len(newColor))
+	fmt.Println(cap(newColor))
+	fmt.Println("===============")
+	hairColor := colors[1:3]
+	fmt.Println(hairColor)
+	fmt.Println(len(hairColor))
+	fmt.Println(cap(hairColor))
+
+	container := make([]string, 4)
+	actors := []string{"Actor1", "Actor2", "Actor3", "Actor4", "Actor5"}
+	fmt.Println(actors)
+	nobel := copy(container, actors)
+	fmt.Println(nobel)
+	fmt.Println(container)
+	fmt.Println("=========")
+
+	newContainer := container[0:2]
+	fmt.Println(newContainer)
+	fmt.Println(len(newContainer))
+	fmt.Println(cap(newContainer))
+	fmt.Println("=========")
+
+	oldContainer := container[1:3]
+	fmt.Println(oldContainer)
+	fmt.Println(len(oldContainer))
+	fmt.Println(cap(oldContainer))
+
 }
