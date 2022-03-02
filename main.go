@@ -290,4 +290,15 @@ func main() {
 	fmt.Println(isAvailable)
 	fmt.Println(value)
 
+	// ++++++++++++++++ SLICE MAP  ++++++++++++++++
+	myKey := []map[string]string{
+		{"key1": "Rahasia", "unlock": "unlockRahasia"},
+		{"key2": "Rahasia123", "unlock": "unlockRahasi123"},
+		{"key3": "Rahasia12345", "unlock": "unlockRahasi12345"},
+	}
+
+	for _, item := range myKey {
+		fmt.Println(item["key1"], item["unlock"])
+	}
+
 }
