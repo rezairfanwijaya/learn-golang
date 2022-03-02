@@ -239,4 +239,23 @@ func main() {
 		fmt.Println(plat)
 	}
 
+	// ++++++++++++++++ MAP  ++++++++++++++++
+	// deklarasi
+	var ganjil map[string]int
+	ganjil = map[string]int{}
+	ganjil["satu"] = 1
+	ganjil["tiga"] = 3
+	ganjil["lima"] = 5
+	fmt.Println(ganjil)
+
+	daerah := map[string]string{
+		"jawa":       "cilacap",
+		"kalimantan": "pekanbaru",
+	}
+
+	fmt.Println(daerah["jawa"])
+	valeus, isAvailable := daerah["kalimantan"]
+	fmt.Println(valeus)
+	fmt.Println(isAvailable)
+
 }
