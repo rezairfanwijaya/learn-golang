@@ -301,4 +301,36 @@ func main() {
 		fmt.Println(item["key1"], item["unlock"])
 	}
 
+	// ++++++++++++++++ QUIZ  ++++++++++++++++
+	// hitung rata-rata dari
+	fmt.Println("===============")
+	// nilai awal
+	scores := [...]int{100, 80, 75, 92, 70, 93, 88, 67}
+	// nilai hasil penjumlahan
+	totals := 0
+	for _, item := range scores {
+		totals = totals + item
+	}
+	length := len(scores)
+	avg := float64(totals) / float64(length)
+	fmt.Println(avg)
+
+	// lalu masukan nilai dari scores di atas ke dalam slice dengan syarat score > 90
+
+	// solusi kedua
+	var goodScores []int
+	for _, item := range scores {
+		if item > 90 {
+			// solusi pertama
+			// goodScores := []int{item}
+			// fmt.Println(goodScores)
+
+			// solusi kedua
+			goodScores = append(goodScores, item)
+		}
+	}
+
+	// solusi kedua
+	fmt.Println(goodScores)
+
 }
