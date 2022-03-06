@@ -333,4 +333,52 @@ func main() {
 	// solusi kedua
 	fmt.Println(goodScores)
 
+	// Pemanggian function biasa
+	Sepeda()
+
+	// Pemanggian function dengan parameter
+	Human("Reza")
+
+	// Pemanggian function dengan output
+	// harus ditampung di varible sebagai tempat menyimpan outputnya
+	roar := Macan("Bagaimana Suara Macan ???")
+	fmt.Println(roar)
+
+	// Pemanggilan function penjumlahan
+	add := add(3, 5)
+	fmt.Println(add)
+
+	// Pemanggilan function pengurangan
+	kurang := minus(10, 8)
+	fmt.Println(kurang)
+}
+
+// ++++++++++++++++ FUNCTION  ++++++++++++++++
+// function biasa
+func Sepeda() {
+	fmt.Println("saya dari function sepeda")
+}
+
+// function dengan parameter
+func Human(nama string) {
+	fmt.Print(nama)
+}
+
+// function dengan output
+func Macan(voice string) string {
+	ask := voice + "ROARRRRRR !!!!"
+	return ask
+}
+
+// function penjumlahan
+func add(num1 int, num2 int) int {
+	// res := num1 + num2
+	// return res
+
+	return num1 + num2
+}
+
+// function dengan tipe data parameter yang sama
+func minus(num1, num2 int) int {
+	return num1 - num2
 }
