@@ -99,6 +99,8 @@ func main() {
 	fmt.Println(len(m))
 	fmt.Println(cap(m))
 
+	// slice
+
 	var piano []string
 	piano = append(piano, "piano1")
 	piano = append(piano, "piano2")
@@ -119,6 +121,8 @@ func main() {
 	fmt.Println(len(hairColor))
 	fmt.Println(cap(hairColor))
 
+	// copy
+
 	container := make([]string, 4)
 	actors := []string{"Actor1", "Actor2", "Actor3", "Actor4", "Actor5"}
 	fmt.Println(actors)
@@ -137,5 +141,7 @@ func main() {
 	fmt.Println(oldContainer)
 	fmt.Println(len(oldContainer))
 	fmt.Println(cap(oldContainer))
+
+	// map
 
 }
