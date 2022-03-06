@@ -351,6 +351,23 @@ func main() {
 	// Pemanggilan function pengurangan
 	kurang := minus(10, 8)
 	fmt.Println(kurang)
+
+	// Pemanggilan function lingkaran dengan 2 return
+	// semua return harus masuk (keliling dan luas)
+	// jika ingin memilih salah satu maka pakai _ saja
+	var r float64 = 5
+	// var keliling, luas = lingkaran(r)
+	var keliling, _ = lingkaran(r)
+	fmt.Println("r = ", r, "Keliling lingaran", keliling)
+	// fmt.Println("r = ", r, "Luas lingaran", luas)
+
+	// Pemanggilan function persegi
+	p := 1
+	l := 10
+	var kelilingP, luasP = persegi(p, l)
+	fmt.Println("P = ", p, "L = ", l, "Keliling = ", kelilingP)
+	fmt.Println("P = ", p, "L = ", l, "Luas = ", luasP)
+
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
@@ -381,4 +398,22 @@ func add(num1 int, num2 int) int {
 // function dengan tipe data parameter yang sama
 func minus(num1, num2 int) int {
 	return num1 - num2
+}
+
+// function dengan multiple return
+func lingkaran(r float64) (float64, float64) {
+	// function ini akan menghitung luas dan keliling lingkaran
+	keliling := (22 / 7) * 2 * r
+	luas := (22 / 7) * r * r
+
+	return keliling, luas
+}
+
+// function dengan multiple return
+func persegi(panjang, lebar int) (int, int) {
+	keliling := 2 * (panjang + lebar)
+	luas := panjang * lebar
+
+	return keliling, luas
+
 }
