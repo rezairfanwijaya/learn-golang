@@ -143,5 +143,45 @@ func main() {
 	fmt.Println(cap(oldContainer))
 
 	// map
+	var myMap map[string]int
+	myMap = map[string]int{}
+	myMap["a"] = 1
+	myMap["b"] = 2
+	myMap["c"] = 3
+	fmt.Println(myMap)
+	for index, item := range myMap {
+		fmt.Println("index : ", index, "value : ", item)
+	}
+
+	Nation := map[string]string{
+		"Asia":      "Indonesia",
+		"Eropa":     "Inggris",
+		"Australia": "Australia",
+	}
+
+	for _, item := range Nation {
+		fmt.Println(item)
+	}
+
+	delete(Nation, "Eropa")
+	fmt.Println("====================")
+	for _, item := range Nation {
+		fmt.Println(item)
+	}
+
+	item, isAvailable := Nation["Eropa"]
+	fmt.Println(item)
+	fmt.Println(isAvailable)
+
+	// quiz
+	fmt.Println("=========== QUIZ ===========")
+	Scores := [3]int{10, 9, 1}
+	var tmp int
+	for _, item := range Scores {
+		tmp += item
+	}
+
+	result := float64(tmp) / float64(len(Scores))
+	fmt.Println(result)
 
 }
