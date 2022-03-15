@@ -184,4 +184,46 @@ func main() {
 	result := float64(tmp) / float64(len(Scores))
 	fmt.Println(result)
 
+	// function
+	human()
+
+	tebakSuara("ROARRRRR !!!")
+
+	add := add(3, 10)
+	fmt.Println(add)
+
+	say := greeting("reza")
+	fmt.Println(say)
+
+	luas, keliling := persegi(10, 10)
+	fmt.Println("luas persegi : ", luas)
+	fmt.Println("keliling persegi : ", keliling)
+
+}
+
+// FUNCTION
+// 1. tanpa parameter
+func human() {
+	fmt.Println("saya dipanggil dari function human")
+}
+
+// 2. dengan parameter
+func tebakSuara(suara string) {
+	fmt.Println("Suara yang dihasilakn ", suara)
+}
+
+// 3. dengan return
+func add(a, b int) int {
+	return a + b
+}
+
+func greeting(name string) string {
+	return fmt.Sprintln("Hallo ", name)
+}
+
+// 4. dengan multiple return values
+func persegi(l, p int) (int, int) {
+	luas := l * p
+	keliling := 2 * (p + l)
+	return luas, keliling
 }
