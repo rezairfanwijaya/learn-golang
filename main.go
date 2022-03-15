@@ -368,6 +368,12 @@ func main() {
 	fmt.Println("P = ", p, "L = ", l, "Keliling = ", kelilingP)
 	fmt.Println("P = ", p, "L = ", l, "Luas = ", luasP)
 
+	final, greet := grade(20, 10)
+	fmt.Println(final, greet)
+
+	pria, wanita := gender("reza")
+	fmt.Println(pria)
+	fmt.Println(wanita)
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
@@ -416,4 +422,27 @@ func persegi(panjang, lebar int) (int, int) {
 
 	return keliling, luas
 
+}
+
+func grade(absensi, kuis int) (int, string) {
+	final := absensi + kuis
+	if final > 70 {
+		return final, fmt.Sprintln("Kamu Lulus !!!")
+	} else {
+		return final, fmt.Sprintln("Anda belum lulus !!!")
+	}
+}
+
+// predifined return values
+// menyebut nama varibale pada nilai balikan
+func gender(nama string) (pria string, wanita string) {
+	if nama == "reza" {
+		pria = "Anda Pria"
+
+	} else {
+		wanita = "Anda Wanita"
+
+	}
+
+	return
 }
