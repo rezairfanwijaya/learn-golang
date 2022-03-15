@@ -13,6 +13,7 @@ package main
 // modul ini di dapat dari gile go.mod dan go.mod ini di dapat dari hasil inisiasi golang pas awal pertama membua project (go mod init namaProject)
 // dan di porject ini nama module nya adalah myapp
 import (
+	"errors"
 	"fmt"
 	"myapp/calculation"
 	"myapp/variables"
@@ -374,6 +375,18 @@ func main() {
 	pria, wanita := gender("reza")
 	fmt.Println(pria)
 	fmt.Println(wanita)
+
+	arr := []int{2, 3, 10}
+	totalArr := sumArray(arr)
+	fmt.Println(totalArr)
+	fmt.Println("=======")
+	res, err := kalkulator(5, 3, ";")
+	if err != nil {
+		fmt.Println("Terjadi Kesalahan")
+		fmt.Println(err)
+	}
+	fmt.Println(res)
+
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
@@ -444,5 +457,34 @@ func gender(nama string) (pria string, wanita string) {
 
 	}
 
+	return
+}
+
+// ++++++++++++++++ QUIZ FUNCTION  ++++++++++++++++
+func sumArray(arr []int) int {
+	num := 0
+	for _, item := range arr {
+		num += item
+	}
+	return num
+}
+
+func kalkulator(num1, num2 float64, operator string) (hasil float64, err error) {
+	switch operator {
+	case "+":
+		hasil = num1 + num2
+
+	case "-":
+		hasil = num1 - num2
+
+	case "*":
+		hasil = num1 * num2
+
+	case "/":
+		hasil = num1 / num2
+
+	default:
+		err = errors.New("Unknown Operation")
+	}
 	return
 }
