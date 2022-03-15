@@ -238,6 +238,100 @@ func main() {
 	for _, plat := range platNomor {
 		fmt.Println(plat)
 	}
+	fmt.Println("==================")
+
+	// ++++++++++++++++ MAP  ++++++++++++++++
+	// jika pada bahasa lain map ini sebagai array assosiative
+
+	// deklarasi pertama
+	// dengan syntax
+	// var namaMap map[tipe index]tipe value
+	var konten map[string]int
+	// inisiasi
+	konten = map[string]int{}
+	// memasukan data ke map
+	konten["PHP"] = 10
+	konten["JAVA"] = 9
+	konten["GO"] = 10
+
+	fmt.Println(konten)
+	fmt.Println(konten["go"])
+	fmt.Println(konten["GO"])
+	for key, bahasa := range konten {
+		fmt.Println("key : ", key, "value : ", bahasa)
+	}
+	fmt.Println("=============")
+
+	// dekralasi kedua
+	books := map[string]string{
+		"Novel": "Novel1",
+		"Comic": "Comic1",
+		"Sains": "Sains",
+	}
+	fmt.Println(books)
+	fmt.Println(books["Sains"])
+	for key, value := range books {
+		fmt.Println("key : ", key, "value : ", value)
+	}
+
+	fmt.Println("================")
+	// hapus data dari map
+	delete(books, "Comic")
+	for key, value := range books {
+		fmt.Println("key : ", key, "value : ", value)
+	}
+
+	// cara cek apakah ada index tertentu di dalam map
+	// sama seperti pada perulangan kita bisa menggukanan _ jiga ada parameter yang tidak ingin dipakai
+	_, isAvailable := books["Comic"]
+	fmt.Println(isAvailable)
+
+	value, isAvailable := books["Sains"]
+	fmt.Println(isAvailable)
+	fmt.Println(value)
+
+	// ++++++++++++++++ SLICE MAP  ++++++++++++++++
+	myKey := []map[string]string{
+		{"key1": "Rahasia", "unlock": "unlockRahasia"},
+		{"key2": "Rahasia123", "unlock": "unlockRahasi123"},
+		{"key3": "Rahasia12345", "unlock": "unlockRahasi12345"},
+	}
+
+	for _, item := range myKey {
+		fmt.Println(item["key1"], item["unlock"])
+	}
+
+	// ++++++++++++++++ QUIZ  ++++++++++++++++
+	// hitung rata-rata dari
+	fmt.Println("===============")
+	// nilai awal
+	scores := [...]int{100, 80, 75, 92, 70, 93, 88, 67}
+	// nilai hasil penjumlahan
+	totals := 0
+	for _, item := range scores {
+		totals = totals + item
+	}
+	length := len(scores)
+	avg := float64(totals) / float64(length)
+	fmt.Println(avg)
+
+	// lalu masukan nilai dari scores di atas ke dalam slice dengan syarat score > 90
+
+	// solusi kedua
+	var goodScores []int
+	for _, item := range scores {
+		if item > 90 {
+			// solusi pertama
+			// goodScores := []int{item}
+			// fmt.Println(goodScores)
+
+			// solusi kedua
+			goodScores = append(goodScores, item)
+		}
+	}
+
+	// solusi kedua
+	fmt.Println(goodScores)
 
 	// ++++++++++++++++ MAP  ++++++++++++++++
 	// deklarasi
@@ -257,5 +351,4 @@ func main() {
 	valeus, isAvailable := daerah["kalimantan"]
 	fmt.Println(valeus)
 	fmt.Println(isAvailable)
-
 }
