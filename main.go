@@ -443,6 +443,13 @@ func main() {
 	fmt.Println("First Name user ketiga", user3.FirstName)
 	fmt.Println("IsActive user keempat", user4.IsActive)
 
+	// struct sebagai parameter
+	fmt.Println("=========== Stuct sebagai parameter ===========")
+	showUser1 := showUser(user1)
+	showUser2 := showUser(user4)
+	fmt.Println(showUser1)
+	fmt.Println(showUser2)
+
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
@@ -543,4 +550,15 @@ func kalkulator(num1, num2 float64, operator string) (hasil float64, err error) 
 		err = errors.New("Unknown Operation")
 	}
 	return
+}
+
+// struct sebagai parameter
+// jadi kita set struct user menjadi tipe data dari parameter
+func showUser(user User) (res string) {
+	// nah user ini sudah merepresentasikan struct User jadi kita bisa mengambil properties nya
+	// %s akan mewakili string
+	res = fmt.Sprintf("Nama: %s %s , Email %s", user.FirstName, user.LastName, user.Email)
+	// kita mengharapkan output = Nama : Putri Selenia Email : putri @gmail.com
+	return
+
 }
