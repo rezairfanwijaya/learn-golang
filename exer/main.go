@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 func main() {
 	// bikin varible
@@ -199,6 +202,19 @@ func main() {
 	fmt.Println("luas persegi : ", luas)
 	fmt.Println("keliling persegi : ", keliling)
 
+	// quiz
+	fmt.Println("============ QUIZ ============")
+	grade := []int{10, 0, 10}
+	res := sumArr(grade)
+	fmt.Println(res)
+
+	result, err := calc(10, 3, "/")
+	if err != nil {
+		fmt.Println("Terjadi kesalahan")
+		fmt.Println(err)
+	}
+	fmt.Println(result)
+
 }
 
 // FUNCTION
@@ -226,4 +242,30 @@ func persegi(l, p int) (int, int) {
 	luas := l * p
 	keliling := 2 * (p + l)
 	return luas, keliling
+}
+
+// quiz function
+func sumArr(arr []int) (total int) {
+	total = 0
+	for _, item := range arr {
+		total += item
+	}
+	return
+}
+
+func calc(num1, num2 float64, operand string) (total float64, err error) {
+	switch operand {
+	case "+":
+		total = num1 + num2
+	case "-":
+		total = num1 - num2
+	case "*":
+		total = num1 * num2
+	case "/":
+		total = num1 / num2
+	default:
+		err = errors.New("Operand Not Found")
+	}
+
+	return
 }
