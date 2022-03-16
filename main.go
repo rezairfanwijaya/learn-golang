@@ -19,7 +19,19 @@ import (
 	"myapp/variables"
 )
 
+// ++++++++++++++++ STRUCT  ++++++++++++++++
+// deklarasi type namaStuct struct
+type User struct {
+	// deklarasi variable atau properties
+	ID        int
+	FirstName string
+	LastName  string
+	Email     string
+	IsActive  bool
+}
+
 func main() {
+
 	fmt.Println("Hallo Dunia")
 
 	// memanggil funtion Sentence di file sentence.go
@@ -386,6 +398,50 @@ func main() {
 		fmt.Println(err)
 	}
 	fmt.Println(res)
+
+	// ++++++++++++++++ STRUCT  ++++++++++++++++
+	// ini pemanggilan struct dari deklarasi di atas
+	fmt.Println("========= STRUCT =========")
+	user1 := User{}
+	// mengisi data ke properties yang ada di struct User
+	user1.ID = 1
+	user1.FirstName = "Prakadinata"
+	user1.LastName = "Mahendra"
+	user1.Email = "prada@gmail.com"
+	user1.IsActive = true
+
+	user2 := User{}
+	// mengisi data ke properties yang ada di struct User
+	// ini boleh acak pengsisian properties nya karena kita deklarasikan properties nya langsung
+	user2.ID = 2
+	user2.LastName = "Putri"
+	user2.FirstName = "Selenia"
+	user2.IsActive = true
+	user2.Email = "selen@gmail.com"
+
+	// ini boleh acak pengsisian properties nya karena kita deklarasikan properties nya langsung
+	user3 := User{FirstName: "Reza", ID: 3, Email: "reza@gmail.com", LastName: "Wijaya", IsActive: true}
+
+	// ini pengisian data nya harus urut karena properties tidak kita deklarasikan
+	user4 := User{
+		4,
+		"Abdas",
+		"Reza",
+		"abdas@gmail.com",
+		true,
+	}
+
+	// print semua data
+	fmt.Println(user1)
+	fmt.Println(user2)
+	fmt.Println(user3)
+	fmt.Println(user4)
+
+	// print data tertentu
+	fmt.Println("ID user pertama", user1.ID)
+	fmt.Println("Email user kedua", user2.Email)
+	fmt.Println("First Name user ketiga", user3.FirstName)
+	fmt.Println("IsActive user keempat", user4.IsActive)
 
 }
 
