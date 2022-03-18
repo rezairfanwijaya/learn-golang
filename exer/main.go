@@ -215,6 +215,55 @@ func main() {
 	}
 	fmt.Println(result)
 
+	human1 := humans{}
+	human1.name = "Reza Irfan Wijaya"
+	human1.address = "Dayeuhluhur"
+	human1.age = 22
+
+	human2 := humans{}
+	human2.name = "Reza Irfan Wijaya"
+	human2.address = "Dayeuhluhur"
+	human2.age = 22
+
+	human3 := humans{name: "Abdas", age: 21, address: "Cilacap"}
+
+	human4 := humans{
+		name:    "Irfan",
+		age:     19,
+		address: "hanum",
+	}
+
+	human5 := humans{
+		"Reza",
+		23,
+		"Sudimampir",
+	}
+
+	fmt.Println(human1)
+	fmt.Println(human2)
+	fmt.Println(human3)
+	fmt.Println(human4)
+	fmt.Println(human5)
+
+	// struct sebagai parameter
+	mhs1 := mahasiswa{
+		nama:  "Reza Irfan",
+		nim:   19102149,
+		kelas: "S1-IF-07-P",
+	}
+
+	mhs2 := mahasiswa{}
+	mhs2.nama = "Ipang"
+	mhs2.kelas = "S1IF-03-T"
+	mhs2.nim = 12345
+
+	showMhs1 := displayMahasiswa(mhs1)
+	
+
+	showMhs2 := displayMahasiswa(mhs2)
+	fmt.Println(showMhs1)
+	fmt.Println(showMhs2)
+
 }
 
 // FUNCTION
@@ -268,4 +317,22 @@ func calc(num1, num2 float64, operand string) (total float64, err error) {
 	}
 
 	return
+}
+
+// Struct
+type humans struct {
+	name    string
+	age     int
+	address string
+}
+
+// struct sebagai parameter
+type mahasiswa struct {
+	nama  string
+	nim   int
+	kelas string
+}
+
+func displayMahasiswa(mhs mahasiswa) string {
+	return fmt.Sprintf("Nama : %s,  Nim : %d, Kelas : %s", mhs.nama, mhs.nim, mhs.kelas)
 }
