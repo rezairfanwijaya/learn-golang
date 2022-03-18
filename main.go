@@ -54,6 +54,23 @@ type group struct {
 	isAvailable bool
 }
 
+// ++++++++++++++++ METHODE STRUCT  ++++++++++++
+// method pada struct ini hampir mirip seperti function pada umumnya namun memiliki syntax yang berdeda
+// disini saya akan mencoba membuat struct baru berupa data negara sekaligus membuat method untuk mencetak data negara tersebut
+
+type Nation struct {
+	Nama     string
+	Penduduk int64
+	Luas     int64
+	Presiden string
+	Benua    string
+}
+
+// nah jadi syntax method itu seperti ini
+func (negara Nation) show() string {
+	return fmt.Sprintf("Nama Negara : %s, jumlah penduduk: %d", negara.Nama, negara.Penduduk)
+}
+
 func main() {
 
 	fmt.Println("Hallo Dunia")
@@ -521,6 +538,51 @@ func main() {
 
 	groupKelasMM4(kelasMM4)
 
+	// ++++++++++++++++ METHODE STRUCT  ++++++++++++
+	// isi data ke struct nation
+	Indonesia := Nation{
+		Nama:     "Indonesia",
+		Penduduk: 12000000,
+		Luas:     123,
+		Presiden: "Jokowi",
+		Benua:    "Asia",
+	}
+
+	Rusia := Nation{
+		Nama:     "Rusia",
+		Penduduk: 100000,
+		Luas:     200,
+		Presiden: "Vladimir Putin",
+		Benua:    "Eropa",
+	}
+
+	Malaysia := Nation{
+		Nama:     "Malaysia",
+		Penduduk: 110000,
+		Luas:     345,
+		Presiden: "Mahathir Mohamad",
+		Benua:    "Asia",
+	}
+
+	KoreaUtara := Nation{
+		Nama:     "Korea Utara",
+		Penduduk: 178000,
+		Luas:     506,
+		Presiden: "Kim Jong Un",
+		Benua:    "Asia",
+	}
+
+	// function show saya deklarasikan diatas
+	showID := Nation.show(Indonesia)
+	showRSA := Nation.show(Rusia)
+	showMLY := Nation.show(Malaysia)
+	showKUT := Nation.show(KoreaUtara)
+
+	fmt.Println(showID)
+	fmt.Println(showRSA)
+	fmt.Println(showMLY)
+	fmt.Println(showKUT)
+
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
@@ -635,7 +697,7 @@ func showUser(user User) (res string) {
 
 // struct embedded show data function
 func groupKelasMM4(groupWA group) {
-	
+
 	fmt.Printf("\n\nNama Group : %s\n", groupWA.Nama)
 	fmt.Printf("Nama Admin : %s\n", groupWA.Admin.Nama)
 	fmt.Printf("Jumlah Anggota : %d", len(groupWA.Anggota))
