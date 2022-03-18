@@ -71,6 +71,38 @@ func (negara Nation) show() string {
 	return fmt.Sprintf("Nama Negara : %s, jumlah penduduk: %d", negara.Nama, negara.Penduduk)
 }
 
+// ++++++++++++++++ QUIZ STRUCT  ++++++++++++
+// pada quiz ini saya akan mengambil case struct untuk organisasi osis yang terdiri dari beberapa siswa
+type Siswa struct {
+	Nama     string
+	Kelas    string
+	Angkatan int
+	Motivasi string
+}
+
+type Osis struct {
+	Nama      string
+	Ketua     string
+	Wakil     string
+	Bendahara string
+	Anggota   []Siswa
+}
+
+func (group Osis) showOsis() {
+	fmt.Print("\n\n")
+	fmt.Printf("OSIS %s\n\n", group.Nama)
+	fmt.Printf("Ketua     :  %s\n", group.Ketua)
+	fmt.Printf("Wakil     :  %s\n", group.Wakil)
+	fmt.Printf("Bendahara :  %s\n\n", group.Bendahara)
+	fmt.Println("Daftar Anggota : ")
+	for _, anggota := range group.Anggota {
+		fmt.Printf("Nama    : %s\n", anggota.Nama)
+		fmt.Printf("Kelas 	: %s\n", anggota.Kelas)
+		fmt.Printf("Angkatan: %d\n", anggota.Angkatan)
+		fmt.Printf("Motivasi: %s\n\n", anggota.Motivasi)
+	}
+}
+
 func main() {
 
 	fmt.Println("Hallo Dunia")
@@ -582,6 +614,61 @@ func main() {
 	fmt.Println(showRSA)
 	fmt.Println(showMLY)
 	fmt.Println(showKUT)
+
+	// ++++++++++++++++ QUIZ STRUCT  ++++++++++++
+	Eza := Siswa{
+		Nama:     "Reza",
+		Kelas:    "XII MIPA 1",
+		Angkatan: 2016,
+		Motivasi: "Ingin menambah wawasan",
+	}
+
+	Jhon := Siswa{
+		Nama:     "Jhon",
+		Kelas:    "XI IPS 5",
+		Angkatan: 2017,
+		Motivasi: "Ingin menambah koneksi",
+	}
+
+	Michelle := Siswa{
+		Nama:     "Michelle",
+		Kelas:    "XII MIPA 2",
+		Angkatan: 2016,
+		Motivasi: "Memperdalam public speaking",
+	}
+
+	Angeline := Siswa{
+		Nama:     "Angeline",
+		Kelas:    "XI MIPA 3",
+		Angkatan: 2017,
+		Motivasi: "Ingin menghilangkan rasa grogi",
+	}
+
+	Abdul := Siswa{
+		Nama:     "Abdul",
+		Kelas:    "XI IPS 1",
+		Angkatan: 2017,
+		Motivasi: "Memenuhi janji kepada diri sendiri",
+	}
+
+	Mayer := Siswa{
+		Nama:     "Mayer",
+		Kelas:    "XII IPS 3",
+		Angkatan: 2016,
+		Motivasi: "Mengasah kemampuan kepemimpinan",
+	}
+
+	anggotaOsis := []Siswa{Eza, Angeline, Michelle}
+
+	GroupOsis := Osis{
+		Nama:      "SMA NEGERI 1 WAKANDA",
+		Ketua:     Jhon.Nama,
+		Wakil:     Mayer.Nama,
+		Bendahara: Abdul.Nama,
+		Anggota:   anggotaOsis,
+	}
+
+	Osis.showOsis(GroupOsis)
 
 }
 
