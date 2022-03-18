@@ -30,6 +30,30 @@ type User struct {
 	IsActive  bool
 }
 
+// ++++++++++++++++ EMBEDDED STRUCT  ++++++++++++
+// adalah stuct yang memilki properti berupa struct lainnya
+// case kali ini saya akan mendemokan sebuah group mahasiswa di telegram yang mana group tersebut akan memiliki nama, admin, dan anggota
+
+// buat struct anggota
+type mahasiswa struct {
+	Nama     string
+	Nim      int
+	Fakultas string
+	Jurusan  string
+	Kelas    string
+	Usia     int
+}
+
+// kedua buat struct untuk group telegram
+type group struct {
+	Nama string
+	// admin ini bertipe mahasiswa karena, properti yg dimiliki admin akan sama dengan properti yang dimiliki struct mahasiswa
+	Admin mahasiswa
+	// sama dengan admin, anggota group pun akan memilki properti yang sama dengan struct mahasiswa dan kita bikin dia jadi slice karena anggota bisa lebih dari satu, beda dengan admin yang hanya 1
+	Anggota     []mahasiswa
+	isAvailable bool
+}
+
 func main() {
 
 	fmt.Println("Hallo Dunia")
@@ -450,6 +474,53 @@ func main() {
 	fmt.Println(showUser1)
 	fmt.Println(showUser2)
 
+	// ++++++++++++++++ EMBEDDED STRUCT  ++++++++++++
+	// kita masukan isi dulu ke dalam struct mahasiswa
+	reza := mahasiswa{
+		Nama:     "Reza",
+		Nim:      19102149,
+		Fakultas: "Fakultas Informatika",
+		Jurusan:  "Teknik Informatika",
+		Kelas:    "S1IF-07-P",
+		Usia:     21,
+	}
+
+	irfan := mahasiswa{
+		Nama:     "Irfan",
+		Nim:      19102148,
+		Fakultas: "Fakultas Informatika",
+		Jurusan:  "Rekayasa Perangkat Lunak",
+		Kelas:    "S1IF-06-N",
+		Usia:     23,
+	}
+
+	wijaya := mahasiswa{
+		Nama:     "Wijaya",
+		Nim:      19102147,
+		Fakultas: "Fakultas Informatika",
+		Jurusan:  "Teknik Informatika",
+		Kelas:    "S1IF-08-H",
+		Usia:     25,
+	}
+
+	// jika struct mahasiswa sudah ada isi nya lanjut mengisi data ke struct grup
+	// namun sebelum itu kita harus mengisi dulu slice anggota group
+	anggota := []mahasiswa{irfan, wijaya}
+	kelasMM4 := group{
+		Nama: "Kelas MM4 Aweeeu",
+		// kita pilih siapa yang menjadi admin
+		Admin: reza,
+		// karena ini slice maka harus kita definiskan terlebih dahulu diatas
+		Anggota:     anggota,
+		isAvailable: true,
+	}
+
+	// kita cetak kelasMM4
+	// fmt.Println(kelasMM4)
+	// agar lebih rapih kita pakai function saja
+
+	groupKelasMM4(kelasMM4)
+
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
@@ -560,5 +631,23 @@ func showUser(user User) (res string) {
 	res = fmt.Sprintf("Nama: %s %s , Email %s", user.FirstName, user.LastName, user.Email)
 	// kita mengharapkan output = Nama : Putri Selenia Email : putri @gmail.com
 	return
+}
 
+// struct embedded show data function
+func groupKelasMM4(groupWA group) {
+	
+	fmt.Printf("\n\nNama Group : %s\n", groupWA.Nama)
+	fmt.Printf("Nama Admin : %s\n", groupWA.Admin.Nama)
+	fmt.Printf("Jumlah Anggota : %d", len(groupWA.Anggota))
+
+	fmt.Println("\nList Anggota : ")
+
+	for _, item := range groupWA.Anggota {
+		fmt.Printf("\nNama : %s\n", item.Nama)
+		fmt.Printf("Jurusan : %s\n", item.Jurusan)
+		fmt.Printf("Fakultas : %s\n", item.Fakultas)
+		fmt.Printf("Kelas : %s\n", item.Kelas)
+		fmt.Printf("Nim : %d\n", item.Nim)
+		fmt.Printf("Usia : %d\n\n", item.Usia)
+	}
 }
