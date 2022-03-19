@@ -15,6 +15,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"myapp/buku"
 	"myapp/calculation"
 	"myapp/variables"
 )
@@ -669,6 +670,15 @@ func main() {
 	}
 
 	Osis.showOsis(GroupOsis)
+
+	// imported struc from another package
+	buku1 := buku.Buku{
+		Judul:     "Buku Satu",
+		Halaman:   349,
+		Pengarang: "Mr.A",
+		Penerbit:  "Erlangga",
+	}
+	fmt.Println(buku1)
 
 }
 
