@@ -351,4 +351,7 @@ func main() {
 	valeus, isAvailable := daerah["kalimantan"]
 	fmt.Println(valeus)
 	fmt.Println(isAvailable)
+
+	
+
 }

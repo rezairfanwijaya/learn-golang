@@ -258,11 +258,53 @@ func main() {
 	mhs2.nim = 12345
 
 	showMhs1 := displayMahasiswa(mhs1)
-	
 
 	showMhs2 := displayMahasiswa(mhs2)
 	fmt.Println(showMhs1)
 	fmt.Println(showMhs2)
+
+	memberOne := Mahasiswa{
+		Nama:     "Member One",
+		Nim:      19102149,
+		Kelas:    "S1IF-07-P",
+		Fakultas: "Informatika",
+		Jurusan:  "Teknik Informatika",
+	}
+
+	memberTwo := Mahasiswa{
+		Nama:     "Member Two",
+		Nim:      19102148,
+		Kelas:    "S1IF-07-K",
+		Fakultas: "Rekayasa Perangkat Lunak",
+		Jurusan:  "Rekayasa Perangkat Lunak",
+	}
+
+	memberThree := Mahasiswa{
+		Nama:     "Member Three",
+		Nim:      19102147,
+		Kelas:    "S1IF-07-D",
+		Fakultas: "Informatika",
+		Jurusan:  "Teknik Informatika",
+	}
+
+	memberFour := Mahasiswa{
+		Nama:     "Member Four",
+		Nim:      19102146,
+		Kelas:    "S1IF-07-R",
+		Fakultas: "Informatika",
+		Jurusan:  "Teknik Informatika",
+	}
+
+	anggotaGroupMHS := []Mahasiswa{memberOne, memberTwo, memberFour}
+
+	groupMHS := Group{
+		Nama:    "Mahasiswa Kreatif Indonesia",
+		Admin:   memberThree,
+		Anggota: anggotaGroupMHS,
+		IsAvail: true,
+	}
+
+	Group.showMember(groupMHS)
 
 }
 
@@ -335,4 +377,36 @@ type mahasiswa struct {
 
 func displayMahasiswa(mhs mahasiswa) string {
 	return fmt.Sprintf("Nama : %s,  Nim : %d, Kelas : %s", mhs.nama, mhs.nim, mhs.kelas)
+}
+
+// embedded struct x quiz struct
+type Mahasiswa struct {
+	Nama     string
+	Nim      int
+	Kelas    string
+	Fakultas string
+	Jurusan  string
+}
+
+type Group struct {
+	Nama    string
+	Admin   Mahasiswa
+	Anggota []Mahasiswa
+	IsAvail bool
+}
+
+func (group Group) showMember() {
+	fmt.Printf("\n\nSelamat Datang Di Grup %s\n", group.Nama)
+	fmt.Printf("Admin Group : %s\n\n", group.Admin.Nama)
+	fmt.Println("Anggota Group: ")
+
+	for _, item := range group.Anggota {
+		fmt.Printf("1. Nama : %s\n", item.Nama)
+		fmt.Printf("2. Kelas : %s\n", item.Kelas)
+		fmt.Printf("3. NIM : %d\n", item.Nim)
+		fmt.Printf("4. Fakultas : %s\n", item.Fakultas)
+		fmt.Printf("5. Jurusan : %s\n\n", item.Jurusan)
+
+	}
+
 }
