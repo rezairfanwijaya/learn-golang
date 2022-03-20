@@ -713,6 +713,30 @@ func main() {
 	fmt.Println("bil1: ", bil1)
 	fmt.Println("bil2: ", &bil2)
 
+	// penulisan lain dari pointer pada varible menggunakan var
+	var sizeSepatu int = 45
+	// untuk mengakses memori ataupun value dari variable sizeSepatu maka harus diakses dengan * disamping tipe data,seperti dibawah
+	var ukuranSepatu *int = &sizeSepatu
+
+	fmt.Println("\n\nsizeSepatu :", sizeSepatu)
+	fmt.Println("ukuranSepatu :", ukuranSepatu)
+
+	// kita coba ubah sizeSepatu menjadi 37
+	sizeSepatu = 37
+	fmt.Println("sizeSepatu :", sizeSepatu)
+	fmt.Println("ukuranSepatu :", ukuranSepatu)
+
+	// pointer sebagai parameter
+	fmt.Println("")
+	fmt.Println("")
+
+	temp := 50
+	fmt.Println("Nilai awal : ", temp)
+	fmt.Println("Memori awal : ", &temp)
+
+	fmt.Println()
+	exchange(&temp, 100)
+
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
@@ -842,4 +866,13 @@ func groupKelasMM4(groupWA group) {
 		fmt.Printf("Nim : %d\n", item.Nim)
 		fmt.Printf("Usia : %d\n\n", item.Usia)
 	}
+}
+
+// pointer sebagai parameter
+// exchange ini akan menerima 2 parameter
+// yang pertama nilai awal dan yang kedua nilai akhir
+func exchange(temp *int, res int) {
+	*temp = res
+	fmt.Println("Nilai Akhir :", *temp)
+	fmt.Println("Memori akhir :", temp)
 }
