@@ -680,6 +680,39 @@ func main() {
 	}
 	fmt.Println(buku1)
 
+	// ++++++++++++++++ POINTER  ++++++++++++++++
+	// pointer adalah tipe data yang mengambil alamat memori dari nilai vairable
+	// ditandai dengan simbol asterisk (*)
+
+	// sebelum kesitu saya akan mencontoh kan bagaimana sebuah variable bisa menampung alamat memori dari variable lain
+	kataKu := "Nama Saya Kata"
+
+	// tanda & ini berari referencing terhadap
+	alamatKataku := &kataKu
+
+	fmt.Printf("\n\nkataku : %s\n", kataKu)
+	// alamatKataku akan menampilkan alamat memori dari varible yang dia referece kan, dalam case ini adalah variable kataku
+	fmt.Println("alamat kataku :", alamatKataku)
+
+	// tetapi jika kita ingin mengambil values dari variable kataku dan menyimpannya ke variable alamatKataku maka kita harus melekukan dereferencing (*) pada saat pencetakan isi varible seperti dibawah ini
+	fmt.Println("Isi kataku pindah ke alamatKataku : ", *alamatKataku)
+
+	// pada pointer juga harus hati-hati karena pada dasar nya ketika satu variable mereference ke alamat varible lain maka mereka memiliki keterikatan yang mana jika salah satu value dari mereka berubah maka akan mengubah value dari variable lain.Kenapa? karena mereka memiliki alamat memori yang sama. Sebagai contoh
+
+	// defenisikan varible terlebih dahulu
+	bil1 := 10
+
+	// bikin variable bil2 menempati memori yg sama dengan variable bil1 dengan cara melakukan referencing (&)
+	bil2 := &bil1
+
+	fmt.Println("bil1: ", bil1)
+	fmt.Println("bil2: ", bil2)
+
+	// lalu coba kita reassign bil2 dengan bilangan 30 dengan menambahkan * di depan varibel bil2 dengan tujuan untuk melakukan derefetrencing
+	*bil2 = 30
+	fmt.Println("bil1: ", bil1)
+	fmt.Println("bil2: ", &bil2)
+
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
