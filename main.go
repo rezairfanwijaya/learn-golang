@@ -753,6 +753,30 @@ func main() {
 	fmt.Println()
 	exchange(&temp, 100)
 
+	// function dengan parameter variadic
+	fmt.Println("===== Function dengan variadic parameter =====")
+	fmt.Println(pariadic(2, 9, 8, 90, 78))
+
+	// menyimpan function kedalam variable
+	x := func(num int) (res int) {
+		res = num * 10
+		return
+	}
+
+	fmt.Println(x(10))
+
+	// function sebagai parameter
+	inc := func(x int) int {
+		return x + 1
+	}
+
+	dec := func(y int) int {
+		return y - 1
+	}
+
+	fmt.Println(changeNumber(inc, 10))
+	fmt.Println(changeNumber(dec, 10))
+
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
@@ -824,6 +848,21 @@ func gender(nama string) (pria string, wanita string) {
 	}
 
 	return
+}
+
+// function dengan variadic parameter
+// variadic adalah function yang panjang / jumlah parameternya belum diketahui
+func pariadic(number ...int) (total int) {
+	total = 0
+	for _, item := range number {
+		total += item
+	}
+	return
+}
+
+// function sebagai parameter
+func changeNumber(f func(x int) int, number int) int {
+	return f(number)
 }
 
 // ++++++++++++++++ QUIZ FUNCTION  ++++++++++++++++
