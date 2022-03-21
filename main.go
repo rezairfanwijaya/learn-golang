@@ -420,6 +420,22 @@ func main() {
 	// solusi kedua
 	fmt.Println(goodScores)
 
+	// function tanpa nama (anonymouse funtion)
+	// function ini bisa langsung kita pake di dalam function main
+	angka1 := 4
+	angka2 := 2
+	func(angka1, angka2 int) {
+		fmt.Println("-------ANONYMOUSE FUNCTION--------")
+		fmt.Println(angka1 + angka2)
+	}(angka1, angka2)
+
+	// anonymouse funtion pun bisa memiliki return
+	numOne := 3
+	func(numOne int) (res int) {
+		res = numOne + 1
+		return res
+	}(numOne)
+
 	// Pemanggian function biasa
 	Sepeda()
 
