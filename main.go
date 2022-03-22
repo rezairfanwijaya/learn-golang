@@ -109,6 +109,18 @@ type Alamat struct {
 	kota, provinsi, negara string
 }
 
+// Pada method
+type Lusus struct {
+	nama    string
+	jurusan string
+	ipk     int
+}
+
+// tipe struct harus diubah menjadi pointer
+func (siswa *Lusus) graduate() {
+	siswa.nama = siswa.nama + " S.T"
+}
+
 func main() {
 
 	fmt.Println("Hallo Dunia")
@@ -788,6 +800,13 @@ func main() {
 
 	fmt.Println(alamat1)
 	fmt.Println(alamat5)
+
+	// pointer pada method
+	fmt.Println("\n\nPointer pada struct")
+	siswa1 := Lusus{nama: "Reza Irfan", jurusan: "Teknik Informatika", ipk: 3}
+
+	siswa1.graduate()
+	fmt.Println(siswa1.nama)
 
 	// function dengan parameter variadic
 	fmt.Println("\n\n===== Function dengan variadic parameter =====")
