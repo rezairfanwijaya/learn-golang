@@ -104,6 +104,11 @@ func (group Osis) showOsis() {
 	}
 }
 
+// Pointer Pada Struct
+type Alamat struct {
+	kota, provinsi, negara string
+}
+
 func main() {
 
 	fmt.Println("Hallo Dunia")
@@ -753,8 +758,39 @@ func main() {
 	fmt.Println()
 	exchange(&temp, 100)
 
+	// pointer pada struct
+	// saya akan ambil struct Alamat
+	fmt.Println("\n\n======= POINTER PADA STRUCT =======")
+	alamat1 := Alamat{kota: "Cilacp", provinsi: "Jawa Tengah", negara: "Indonesia"}
+	// alamat 2 ini melakukan pass by value ke alamat1
+	alamat2 := alamat1
+	// kalau melakukan pass by value maka jika ada perubahan di alamat 2, alamat 1 tidak akan ikut berubah
+	alamat2.kota = "Banyumas"
+	fmt.Println(alamat1)
+	fmt.Println(alamat2)
+	fmt.Println(alamat1)
+
+	// nah jika ingin berubah data di alamat1 maka kita harus melakukan pass by references ke alamat1 menggunakan pointer seperti pada alamat3 ini
+	alamat3 := &alamat1
+	alamat3.kota = "Surabaya"
+	fmt.Println(alamat3)
+	fmt.Println(alamat1)
+
+	// kita juga bisa me-reassign nilai dari alamat4 yang merefference ke alamat1 dengan address baru misal seperti dibawah ini
+	// dan ini hanya berlaku pada alamat 4 saja , tidak mempengaruhi variable mana pun
+	alamat4 := &alamat1
+	alamat4 = &Alamat{kota: "Tasik", provinsi: "Jawa Barat", negara: "Indonesis"}
+	fmt.Println(alamat4)
+
+	// lalu bagaimana jika kita ingin ketika suatu alamat baru dibikin maka akan mengubah ke vairable alamat reference nya. caranya seperti dibawah ini
+	alamat5 := &alamat1
+	*alamat5 = Alamat{kota: "Bandung", provinsi: "Jawa Barat", negara: "Indonesia"}
+
+	fmt.Println(alamat1)
+	fmt.Println(alamat5)
+
 	// function dengan parameter variadic
-	fmt.Println("===== Function dengan variadic parameter =====")
+	fmt.Println("\n\n===== Function dengan variadic parameter =====")
 	fmt.Println(pariadic(2, 9, 8, 90, 78))
 
 	// menyimpan function kedalam variable
