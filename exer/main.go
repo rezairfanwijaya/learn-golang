@@ -306,6 +306,24 @@ func main() {
 
 	Group.showMember(groupMHS)
 
+	// POINTER
+	angka := 4
+	alamatAngka := &angka
+
+	fmt.Printf("Nilai dari angka : %d\n", angka)
+	fmt.Println("Alamat nya : ", alamatAngka)
+
+	*alamatAngka = 40
+
+	fmt.Printf("Nilai dari angka : %d\n", angka)
+	fmt.Println("Alamat nya : ", alamatAngka)
+
+	num := 100
+	fmt.Println("\n\nNilai Awal : ", num)
+	fmt.Println("Memori Awal : ", &num)
+	fmt.Println()
+	exchange(&num, 900)
+
 }
 
 // FUNCTION
@@ -406,7 +424,13 @@ func (group Group) showMember() {
 		fmt.Printf("3. NIM : %d\n", item.Nim)
 		fmt.Printf("4. Fakultas : %s\n", item.Fakultas)
 		fmt.Printf("5. Jurusan : %s\n\n", item.Jurusan)
-
 	}
+}
+
+// pointer sebagai parameter
+func exchange(num *int, res int) {
+	*num = res
+	fmt.Println("Nilai Akhir : ", *num)
+	fmt.Println("Memori Akhir: ", num)
 
 }
