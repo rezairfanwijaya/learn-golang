@@ -843,6 +843,26 @@ func main() {
 	new.AddGame("Ironman")
 	new.showGames()
 
+	// ++++++++++++++++ INTERFACE  ++++++++++++++++
+	// interface adalah sebuah tipe data yang menyimpan sebuah fungsi yang dapat diimplementasikan oleh sebuah class
+	// bisa disebut sebagai kontrak untuk sebuah method
+	// yang mana jika method tersebut diimplementasikan oleh class lain maka class tersebut harus mengimplementasikan interface tersebut
+
+	// pengsisian data ke struct persegi dan segitiga
+	fmt.Println("\n\n===== INTERFACE =====")
+	var persegi Persegi
+	persegi.Sisi = 10
+	var segitiga Segitiga
+	segitiga.Alas = 10
+	segitiga.Tinggi = 10
+
+	// pengaksesan interface
+	luasPersegi := HitungLuas(persegi)
+	luasSegitiga := HitungLuas(segitiga)
+
+	fmt.Println("Luas Persegi : ", luasPersegi)
+	fmt.Println("Luas Segitiga : ", luasSegitiga)
+
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
@@ -1017,4 +1037,39 @@ func (g Gamer) showGames() {
 		i++
 	}
 
+}
+
+// ++++++++++++++++ INTERFACE  ++++++++++++++++
+type Bangundatar interface {
+	// nama function dan return
+	luas() int
+}
+
+// lalu kita bikin implementasi dari interface dengan cara membuat struct yang nanti nya memilki method getName sesuai yang tertera pada interface Bangundatar
+// saya akan membuat 2 struct : persegi dan segitiga
+
+type Persegi struct {
+	Sisi int
+}
+
+// nah di method ini harus mencantumkan luas() lengkap dengan return
+func (p Persegi) luas() int {
+	return p.Sisi * p.Sisi
+}
+
+type Segitiga struct {
+	Alas   int
+	Tinggi int
+}
+
+func (segitiga Segitiga) luas() int {
+	return segitiga.Alas * segitiga.Tinggi / 2
+}
+
+// kita bikin satu function untuk menampung luas
+// function ini harus menerima parameter dengan tipe interface Bangundatar yang akan diisi dengan bangun datar yang ingin kita cek luas nya (dalam hal ini segitiga dan persegi)
+
+// jadi function HitungLuas bisa dipakai oleh banyak bangun datar
+func HitungLuas(bangundatar Bangundatar) int {
+	return bangundatar.luas()
 }
