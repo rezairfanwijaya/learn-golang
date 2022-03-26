@@ -324,6 +324,13 @@ func main() {
 	fmt.Println()
 	exchange(&num, 900)
 
+	var alumniReza Alumniku
+	alumniReza.Nama = "Reza Irfan"
+	alumniReza.Nim = 19102149
+
+	alumniReza.change()
+	fmt.Println(alumniReza.Nama)
+
 }
 
 // FUNCTION
@@ -433,4 +440,13 @@ func exchange(num *int, res int) {
 	fmt.Println("Nilai Akhir : ", *num)
 	fmt.Println("Memori Akhir: ", num)
 
+}
+
+type Alumniku struct {
+	Nama string
+	Nim  int
+}
+
+func (A *Alumniku) change() {
+	A.Nama = A.Nama + " S.T"
 }
