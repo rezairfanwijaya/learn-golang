@@ -832,6 +832,17 @@ func main() {
 	fmt.Println(changeNumber(inc, 10))
 	fmt.Println(changeNumber(dec, 10))
 
+	// ++++++++++++++++ QUIZ POINTER  ++++++++++++++++
+	fmt.Println("\n\n===== QUIZ POINTER =====")
+	var new Gamer
+	new.AddGame("Spiderman")
+	new.AddGame("Superman")
+	new.AddGame("Batman")
+	new.AddGame("Wonder")
+	new.AddGame("Hulk")
+	new.AddGame("Ironman")
+	new.showGames()
+
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
@@ -985,4 +996,25 @@ func exchange(temp *int, res int) {
 	*temp = res
 	fmt.Println("Nilai Akhir :", *temp)
 	fmt.Println("Memori akhir :", temp)
+}
+
+// ++++++++++++++++ QUIZ POINTER  ++++++++++++++++
+type Gamer struct {
+	Name  string
+	Games []string
+}
+
+func (g *Gamer) AddGame(game string) []string {
+	g.Games = append(g.Games, game)
+	return g.Games
+}
+
+func (g Gamer) showGames() {
+	fmt.Println("Daftar Games :")
+	i := 1
+	for _, item := range g.Games {
+		fmt.Printf("%d. %s\n", i, item)
+		i++
+	}
+
 }
