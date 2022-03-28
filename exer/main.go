@@ -331,6 +331,56 @@ func main() {
 	alumniReza.change()
 	fmt.Println(alumniReza.Nama)
 
+	// interface
+	// kita insiasi struct persegi dan segitiga
+	var p Persegi
+	p.sisi = 10
+
+	var s Segitiga
+	s.alas = 10
+	s.tinggi = 10
+
+	// kita masukan struct persegi dan segitiga ke dalam function hitungLuas
+	luasPersegi := hitungLuas(p)
+	luasSegitiga := hitungLuas(s)
+	fmt.Println(luasPersegi)
+	fmt.Println(luasSegitiga)
+
+	var singa Hewan
+	singa.name = "singa"
+
+	var kucing Hewan
+	kucing.name = "kucing"
+
+	HelloHewan(singa)
+	HelloHewan(kucing)
+
+	req := 80
+	fmt.Println(NilaiBalikan(req))
+
+	// interface kosong pada map
+	var mapReza map[string]interface{}
+	mapReza = map[string]interface{}{
+		"nama": "Reza Irfan",
+		"nim":  19102149,
+		"usia": 20,
+	}
+
+	for key, value := range mapReza {
+		fmt.Println(key, ":", value)
+	}
+
+	mobil := map[string]interface{}{
+		"merk":  "Toyota",
+		"tipe":  "Avanza",
+		"tahun": 2019,
+		"harga": 290000000000,
+	}
+
+	for key, value := range mobil {
+		fmt.Println(key, ":", value)
+	}
+
 }
 
 // FUNCTION
@@ -449,4 +499,63 @@ type Alumniku struct {
 
 func (A *Alumniku) change() {
 	A.Nama = A.Nama + " S.T"
+}
+
+// interface
+type BangunDatar interface {
+	luas() float64
+}
+
+// struct yang akan menggunakan interface bangundatar
+type Persegi struct {
+	sisi int
+}
+
+type Segitiga struct {
+	alas, tinggi float64
+}
+
+// method yang akan digunakan oleh kedua struct diatas harus sama dengan method yang tertera pada interface
+func (p Persegi) luas() float64 {
+	return float64(p.sisi * p.sisi)
+}
+
+func (s Segitiga) luas() float64 {
+	return 0.5 * s.alas * s.tinggi
+}
+
+// kita bikin function untuk menghitung luas bangun datar dengan parameter berupa interface bangundatar
+func hitungLuas(bd BangunDatar) float64 {
+	// akan meretun nilai luas dari bangundatar yang diinputkan
+	return bd.luas()
+}
+
+type Hello interface {
+	getName() string
+}
+
+type Hewan struct {
+	name string
+}
+
+func (h Hewan) getName() string {
+	return h.name
+}
+
+func HelloHewan(h Hello) {
+	fmt.Println("Hello ", h.getName())
+}
+
+// interface kosong
+// saya menerapkan interface pada return function
+// jadi function ini bebas mengembalikan return nilai apa sajaaa tidak terikat oleh tipe data apa saja
+func NilaiBalikan(nilai int) interface{} {
+	if nilai < 40 {
+		return "Nilai anda kurang dari 40"
+	} else if nilai > 40 && nilai < 100 {
+		return "Nilai anda kurang dari 100 dan lebih dari 40"
+	} else {
+		return nilai
+	}
+
 }
