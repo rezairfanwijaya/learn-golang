@@ -863,6 +863,16 @@ func main() {
 	fmt.Println("Luas Persegi : ", luasPersegi)
 	fmt.Println("Luas Segitiga : ", luasSegitiga)
 
+	// interface error
+	fmt.Println("\n\n===== INTERFACE ERROR =====")
+	hasil, error := PembagianBilangan(90, 90)
+	if error != nil {
+		// jika terjadi error
+		fmt.Println(error)
+	} else {
+		fmt.Println(hasil)
+	}
+
 }
 
 // ++++++++++++++++ FUNCTION  ++++++++++++++++
@@ -975,7 +985,7 @@ func kalkulator(num1, num2 float64, operator string) (hasil float64, err error) 
 		hasil = num1 / num2
 
 	default:
-		err = errors.New("Unknown Operation")
+		err = errors.New("unknown operation")
 	}
 	return
 }
@@ -1072,4 +1082,19 @@ func (segitiga Segitiga) luas() int {
 // jadi function HitungLuas bisa dipakai oleh banyak bangun datar
 func HitungLuas(bangundatar Bangundatar) int {
 	return bangundatar.luas()
+}
+
+// interface error
+// interface error adalah interface yang menyediakan method Error()
+// yang akan mengembalikan nilai error
+
+// harus memilki 2 return yaitu nilai error dan nilai hasil bagi
+func PembagianBilangan(atas, bawah int) (res int, err error) {
+	if bawah == 0 {
+		err = errors.New("pembagi tidak boleh nol")
+		return
+	} else {
+		res = atas / bawah
+		return
+	}
 }
