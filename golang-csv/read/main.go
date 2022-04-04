@@ -14,7 +14,7 @@ import (
 func openFile(csvName string) (*os.File, error) {
 
 	// ambil direktori file csv
-	path, err := filepath.Abs("data/" + csvName + ".csv")
+	path, err := filepath.Abs("../data/" + csvName + ".csv")
 	if err != nil {
 		return nil, err
 	}
