@@ -27,10 +27,11 @@ func hello(w http.ResponseWriter, r *http.Request) {
 		reqbody, err := ioutil.ReadAll(r.Body)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
 		}
 
 		// bikin varible penampung data user
-		newUser := user{}
+		var newUser user
 
 		// kita buka json untuk dibaca (unmarshal)->decode
 		json.Unmarshal(reqbody, &newUser)
@@ -53,6 +54,6 @@ func hello(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", hello)
-	http.ListenAndServe(":8080", nil)
 	fmt.Println("server is running on http://localhost:8080")
+	http.ListenAndServe(":8080", nil)
 }

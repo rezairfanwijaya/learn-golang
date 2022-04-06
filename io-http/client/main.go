@@ -26,16 +26,16 @@ func checkServer(user user) (message, error) {
 	userByte, _ := json.Marshal(user)
 	var receivedMessage message
 	// user melakuan persiapan request dengan params post ke server dengan user baseURL
-	req, err := http.NewRequest("POST", baseURL, bytes.NewBuffer(userByte))
+	request, err := http.NewRequest("POST", baseURL, bytes.NewBuffer(userByte))
 	if err != nil {
 		return message{}, err
 	}
 
 	// set header
-	req.Header.Set("Content-Type", "application/json")
+	request.Header.Set("Content-Type", "application/json")
 
 	// user melalukan request ke server
-	response, err := client.Do(req)
+	response, err := client.Do(request)
 	if err != nil {
 		return message{}, err
 	}
