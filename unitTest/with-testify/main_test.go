@@ -8,6 +8,18 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// test main untuk implementasi before dan after testing
+func TestMain(m *testing.M) {
+	// before
+	fmt.Println("Before testing")
+
+	// run all test
+	m.Run()
+
+	// after testing
+	fmt.Println("After testing")
+}
+
 func TestSum(t *testing.T) {
 	assert.Equal(t, Sum(4, 6), 10)
 }
