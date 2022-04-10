@@ -36,3 +36,14 @@ func TestSkip(t *testing.T) {
 
 	fmt.Println("Ini testing ")
 }
+
+// implementasi subtest
+func TestBagi(t *testing.T) {
+	t.Run("Not_nol", func(t *testing.T) {
+		assert.Equal(t, bagi(10, 2), 5)
+	})
+
+	t.Run("With_nol", func(t *testing.T) {
+		assert.Equal(t, bagi(10, 0), "Nol tidak boleh")
+	})
+}

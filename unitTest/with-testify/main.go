@@ -14,7 +14,12 @@ func Hello(nama string) string {
 	return fmt.Sprintf("Hello %s", nama)
 }
 
+func bagi(bil1, bil2 int) int {
+	return bil1 / bil2
+}
+
 func main() {
 	fmt.Println(Sum(4, 6))
 	fmt.Println(Hello("Budi"))
+	fmt.Println(bagi(10, 2))
 }
