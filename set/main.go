@@ -7,6 +7,9 @@ import (
 // sipkan struct
 type customSet struct {
 	container map[string]struct{}
+	// deklarasi set ada 2 cara
+	// 1. menggunakan map[string]struct{}
+	// 2. menggunakan map[string]bool
 }
 
 //MakeSet initialize the set
@@ -22,7 +25,12 @@ func (c *customSet) Exists(key string) bool {
 }
 
 func (c *customSet) Add(key string) {
+	if !c.Exists(key) {
 	c.container[key] = struct{}{}
+	} else {
+		fmt.Printf("Add Error: Item already exists in set\n")
+	}
+
 }
 
 func (c *customSet) Remove(key string) error {
@@ -42,6 +50,8 @@ func main() {
 	customSet := makeSet()
 	fmt.Printf("Add: A\n")
 	customSet.Add("A")
+	fmt.Printf("Add: B\n")
+	customSet.Add("B")
 	fmt.Printf("Add: B\n")
 	customSet.Add("B")
 	fmt.Printf("Size: %d\n", customSet.Size())
