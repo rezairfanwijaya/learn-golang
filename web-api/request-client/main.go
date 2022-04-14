@@ -18,7 +18,7 @@ type Student struct {
 var baseURL = "http://localhost:8080"
 
 // function untuk mengirimkan request POST ke server
-func fetchUser() ([]Student, error) {
+func fetchUsers() ([]Student, error) {
 	// inisiasi
 	var err error
 	var client = &http.Client{}
@@ -36,6 +36,8 @@ func fetchUser() ([]Student, error) {
 		return nil, err
 	}
 
+	fmt.Println(response)
+
 	// defer
 	defer response.Body.Close()
 
@@ -49,7 +51,7 @@ func fetchUser() ([]Student, error) {
 }
 
 func main() {
-	data, err := fetchUser()
+	data, err := fetchUsers()
 	if err != nil {
 		log.Fatal(err)
 		return
