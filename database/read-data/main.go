@@ -54,6 +54,7 @@ func Show_All_Data() {
 		return
 	}
 
+	
 	// defer
 	defer res.Close()
 
