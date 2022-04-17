@@ -25,6 +25,7 @@ func CRUD() {
 
 	// defer
 	defer conn.Close()
+	
 
 	// insert data
 	_, err = conn.Exec("INSERT INTO tb_students values (?, ?, ?, ?) ", 6, "EJA", 20, 1)
