@@ -54,7 +54,6 @@ func Show_All_Data() {
 		return
 	}
 
-	
 	// defer
 	defer res.Close()
 
@@ -174,10 +173,49 @@ func Show_Data_ById(id int) {
 
 }
 
+// function untuk melakukan query menggunakan prepare
+// prepare ini bisa dianalogikan seperti query yang bisa diisi variabel
+// alhasil bisa dipakai berulang kali
+func Show_Data_With_Prepare() {
+
+	// koneksi ke database
+	db, err := Connect_db()
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	// defer
+	defer db.Close()
+
+	// prepare query
+	query, err := db.Prepare("SELECT * FROM tb_students WHERE id = ?")
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+
+	// defer
+	defer query.Close()
+
+	// inisiali struct
+	var student1 Student
+	query.QueryRow("1").Scan(&student1.Id, &student1.Name, &student1.Age, &student1.Grade)
+	fmt.Printf("\nMenampilkan hasil pencarian id %d\n", student1.Id)
+	fmt.Println(student1)
+
+	var student2 Student
+	query.QueryRow("2").Scan(&student2.Id, &student2.Name, &student2.Age, &student2.Grade)
+	fmt.Printf("\nMenampilkan hasil pencarian id %d\n", student2.Id)
+	fmt.Println(student2)
+
+}
+
 func main() {
 	age := 29
 	id := 2
 	Show_All_Data()
 	Show_Data_By_Age(age)
 	Show_Data_ById(id)
+	Show_Data_With_Prepare()
 }
