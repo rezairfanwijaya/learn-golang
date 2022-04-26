@@ -1,0 +1,2 @@
+Middleware ini isi project nya sama seperti http-basic-auth namun ade beberapa perubahan
+Jadi middleware ini akan digunakan sebagai gerbang user mengakses url harus melewati middleware ini dahulu, biasanya disini terdapat auth 
