@@ -13,4 +13,7 @@ Pada kasus kali ini kita akan membuat web service sederhana yang hanya menggunak
 2. /student?id=2
 >menampilkan data id 2
 
-Kita butuh 3 file yaitu middleware.go, main.go, student.go
+Kita butuh 3 file berupa
+- middleware.go
+- main.go
+- student.go
