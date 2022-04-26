@@ -5,7 +5,7 @@ method ini tidak memerlukan cookies maupun session
 Namun username dan password yang akan dimasukan ke header tidak se"mentah"itu, harus kita rahasiakan dengan cara meng-encode terlebih dahulu.Dengan syarat username dan password dipisahkan dengan :
 
 Contoh encode
-```bade64encode("username:password")```
+`bade64encode("username:password")`
 
 Pada kasus kali ini kita akan membuat web service sederhana yang hanya menggunakan 1 endpoint dengan detail :
 1. /student -> menampilkan semua student
