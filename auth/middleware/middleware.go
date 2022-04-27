@@ -6,6 +6,13 @@ import "net/http"
 const USERNAME = "Reza"
 const PASSWORD = "123"
 
+// struct untuk custommux
+type CustomMux struct {
+	http.ServeMux
+	middlewares []func(next http.Handler) http.Handler
+}
+
+// ====================== MUX DEFAULT ======================
 // func Auth
 func MiddlewareAuth(next http.Handler) http.Handler {
 	// return untuk http.Handler yang mana di dalam nya terdapat pengecekan username dan password
@@ -41,4 +48,18 @@ func MiddlewareAllowOnlyGet(next http.Handler) http.Handler {
 
 		next.ServeHTTP(w, r)
 	})
+}
+
+// ====================== MUX CUSTOM ======================
+func (c *CustomMux) RegisterMiddleware(next func(next http.Handler) http.Handler) {
+	c.middlewares = append(c.middlewares, next)
+}
+
+func (c *CustomMux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	var current http.Handler = &c.ServeMux
+	for _, next := range c.middlewares {
+		current = next(current)
+	}
+
+	current.ServeHTTP(w, r)
 }

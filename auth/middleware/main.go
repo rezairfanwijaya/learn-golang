@@ -35,26 +35,47 @@ func OutputJSON(w http.ResponseWriter, data interface{}) {
 
 func main() {
 
-	// disini kita akan menggunakan mux sebagai penerapan dari inteface http.Handler
+	// ====================== MUX DEFAULT ======================
+	// // disini kita akan menggunakan mux sebagai penerapan dari inteface http.Handler
 
+	// // inisiate mux
+	// myMux := http.DefaultServeMux
+
+	// // daftarkan url
+	// myMux.HandleFunc("/student", AccessStudent)
+
+	// // bikin handler untuk menginisialisasi middleware
+	// var handler http.Handler = myMux
+	// handler = MiddlewareAuth(handler)
+	// handler = MiddlewareAllowOnlyGet(handler)
+
+	// // bikin server
+	// server := new(http.Server)
+	// server.Addr = ":8080"
+	// server.Handler = handler
+
+	// // notif
+	// fmt.Println("server on http://localhost:8080")
+	// server.ListenAndServe()
+
+	// ====================== MUX CUSTOM ======================
+	// kita akan custom mux
 	// inisiate mux
-	myMux := http.DefaultServeMux
+	myMux := new(CustomMux) //CustomMux ini akan kita bikin nanti di file middleware.go
 
-	// daftarkan url
+	// bikin handlefunc sebagai route
 	myMux.HandleFunc("/student", AccessStudent)
 
-	// bikin handler untuk menginisialisasi middleware
-	var handler http.Handler = myMux
-	handler = MiddlewareAuth(handler)
-	handler = MiddlewareAllowOnlyGet(handler)
+	// register middleware
+	myMux.RegisterMiddleware(MiddlewareAuth)
+	myMux.RegisterMiddleware(MiddlewareAllowOnlyGet)
 
-	// bikin server
+	// create server
 	server := new(http.Server)
 	server.Addr = ":8080"
-	server.Handler = handler
+	server.Handler = myMux
 
 	// notif
 	fmt.Println("server on http://localhost:8080")
 	server.ListenAndServe()
-
 }
