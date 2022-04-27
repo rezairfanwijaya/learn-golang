@@ -9,16 +9,6 @@ import (
 // func AccessStudent
 func AccessStudent(w http.ResponseWriter, r *http.Request) {
 
-	// kita cek apakah user sudah melakukan auth
-	if !Auth(w, r) {
-		return
-	}
-
-	// kita cek apkakah method yang dikirim adalah GET? karena hanya GET yang diperbolehkan
-	if !AllowOnlyGet(w, r) {
-		return
-	}
-
 	// lalu kita cek lagi apakah di url ada parameter id jika ada maka tampilkan student berdasar id
 	if id := r.URL.Query().Get("id"); id != "" {
 		OutputJSON(w, SelectStudent(id))
@@ -44,14 +34,27 @@ func OutputJSON(w http.ResponseWriter, data interface{}) {
 }
 
 func main() {
-	// daftarkan routing untuk akses student
-	http.HandleFunc("/student", AccessStudent)
+
+	// disini kita akan menggunakan mux sebagai penerapan dari inteface http.Handler
+
+	// inisiate mux
+	myMux := http.DefaultServeMux
+
+	// daftarkan url
+	myMux.HandleFunc("/student", AccessStudent)
+
+	// bikin handler untuk menginisialisasi middleware
+	var handler http.Handler = myMux
+	handler = MiddlewareAuth(handler)
+	handler = MiddlewareAllowOnlyGet(handler)
 
 	// bikin server
 	server := new(http.Server)
 	server.Addr = ":8080"
+	server.Handler = handler
 
-	fmt.Println("Server is running at port 8080")
+	// notif
+	fmt.Println("server on http://localhost:8080")
 	server.ListenAndServe()
 
 }
