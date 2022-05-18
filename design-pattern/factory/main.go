@@ -7,4 +7,5 @@ func main() {
 
 	konten := creator.CreateContent()
 	konten.Play()
+	konten.Type()
 }

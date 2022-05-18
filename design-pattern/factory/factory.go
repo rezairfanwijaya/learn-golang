@@ -17,7 +17,7 @@ import "fmt"
 // super class content
 type Content interface {
 	Play()
-	Type() string
+	Type()
 }
 
 // turunan dari content
@@ -33,24 +33,24 @@ func (w *WebDevelopment) Play() {
 	fmt.Println("Hari ini sedang berlangsung konten web development")
 }
 
-func (w *WebDevelopment) Type() string {
-	return Edukasi
+func (w *WebDevelopment) Type() {
+	fmt.Println("Tipe konten ", Edukasi)
 }
 
 func (m *MobileDevelopment) Play() {
 	fmt.Println("Hari ini sedang berlangsung konten mobile development")
 }
 
-func (m *MobileDevelopment) Type() string {
-	return Edukasi
+func (m *MobileDevelopment) Type() {
+	fmt.Println("Tipe konten ", Edukasi)
 }
 
 func (v *VlogLiburan) Play() {
 	fmt.Println("Hari ini sedang berlangsung konten vlog liburan")
 }
 
-func (v *VlogLiburan) Type() string {
-	return Hiburan
+func (v *VlogLiburan) Type() {
+	fmt.Println("Tipe konten ", Hiburan)
 }
 
 // super class content creator
